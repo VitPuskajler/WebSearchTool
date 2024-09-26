@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Page</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .search-bar {
+            width: 300px;
+            padding: 10px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+        .search-button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 25px;
+            border: none;
+            background-color: #4285F4;
+            color: white;
+            cursor: pointer;
+        }
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            padding-top: 3%;
+        }
+        .download-button {
+            padding: 15px 25px;
+            border-radius: 25px;
+            border: none;
+            background-color: #34A853;
+            color: white;
+            cursor: pointer;
+            flex: 1;
+            text-align: center;
+        }
+        .download-button:hover {
+            background-color: #0F9D58;
+        }
+        .web-title {
+            text-align: center;
+            padding: 30px;
+            font-size: 2rem;
+            font-weight: bold;
+            position: absolute; /* Position it absolutely relative to the body */
+            top: 17%;             /* Stick it to the top of the window */
+            left: 50%;          /* Move it to the center horizontally */
+            transform: translateX(-50%); /* Adjust for centering based on its own width */
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <p>
+            <h2 class="web-title">
+                Download Files from Google's First Page
+            </h2>
+    </p>
+</br>
+    </div>
+    <div class="search-container">
+        <form action="/" method="post">
+            <input type="text" name="query" class="search-bar" placeholder="Search..." required>
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+
+    <div class="buttons-container">
+        <form action="/download_raw_json" method="POST">
+            <button type="submit" class="download-button">Download Raw Data in JSON</button>
+        </form>
+        <form action="/download_clean_json" method="POST">
+            <button type="submit" class="download-button">Download Clean Data in JSON</button>
+        </form>
+        <form action="/download_clean_csv" method="POST">
+            <button type="submit" class="download-button">Download Clean Data in CSV</button>
+        </form>
+    </div>
+
+<!-- Little bit of JS to change color of buttons after they are clicked on -->
+<script >
+    const buttons = document.querySelectorAll(".download-button");
+    // Loop through all buttons and add the event listeners
+    buttons.forEach(button => {
+    // Change color when button is pressed
+    button.addEventListener('mousedown', function() {
+        button.style.backgroundColor = '#4285F4'; // Change to green when pressed
+    });
+    button.addEventListener('mouseenter', function() {
+        button.style.backgroundColor = 'green'; // Change color on hover
+    });
+    button.addEventListener('mouseleave', function() {
+        button.style.backgroundColor = '#34A853'; // Revert to original color
+    });
+});
+
+</script>
+</body>
+</html>
